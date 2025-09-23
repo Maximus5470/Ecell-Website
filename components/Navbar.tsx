@@ -3,9 +3,9 @@ import Image from 'next/image';
 
 const Navbar = () => {
   return (
-    <nav className="flex items-center justify-between py-4 px-8 bg-white">
+    <nav className="flex items-center justify-between bg-gray-50 py-4 px-8 sticky top-0 z-50 shadow-sm">
       <div className="flex items-center">
-        <Image src="/ecelllogo.png" alt="E-Cell IARE Logo" width={175} height={10} priority />
+        <Image src="/ecelllogo.png" alt="E-Cell IARE Logo" width={150} height={10} priority />
       </div>
       <ul className="flex flex-1 justify-center items-center list-none gap-9 m-0 p-0">
         <li className="font-inter text-[16px] font-normal text-gray-800 cursor-pointer transition-colors hover:text-teal-600">Home</li>
