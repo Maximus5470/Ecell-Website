@@ -15,7 +15,7 @@ const Footer = () => {
         width: "100%",
         padding: 0,
         margin: 0,
-        position: "fixed",   // keeps footer stuck to bottom
+        position: "fixed", // keeps footer stuck to bottom
         bottom: 0,
         left: 0,
         zIndex: 1000,
@@ -42,14 +42,29 @@ const Footer = () => {
         >
           {/* Left: E-CELL IARE Heading with Symbol */}
           <div style={{ display: "flex", alignItems: "center", marginRight: 40 }}>
-            <span style={{ display: "inline-flex", width: 32, height: 32, background: "#fff", borderRadius: "50%", alignItems: "center", justifyContent: "center", marginRight: 10 }}>
-              <img src="/mic_extras/bigstar.png" alt="E-CELL IARE Star" style={{ width: 22, height: 22 }} />
+            <span
+              style={{
+                display: "inline-flex",
+                width: 32,
+                height: 32,
+                background: "#fff",
+                borderRadius: "50%",
+                alignItems: "center",
+                justifyContent: "center",
+                marginRight: 10,
+              }}
+            >
+              <img
+                src="/mic_extras/bigstar.png"
+                alt="E-CELL IARE Star"
+                style={{ width: 22, height: 22 }}
+              />
             </span>
             <h2
               style={{
                 color: "#fff",
                 fontSize: 22,
-                fontWeight: 700,
+                fontWeight: 1000,
                 margin: 0,
               }}
             >
@@ -64,7 +79,7 @@ const Footer = () => {
               style={{
                 color: "#fff",
                 textDecoration: "underline",
-                fontWeight: 500,
+                fontWeight: 700,
               }}
             >
               About us
@@ -74,7 +89,7 @@ const Footer = () => {
               style={{
                 color: "#fff",
                 textDecoration: "underline",
-                fontWeight: 500,
+                fontWeight: 700,
               }}
             >
               Services
@@ -84,7 +99,7 @@ const Footer = () => {
               style={{
                 color: "#fff",
                 textDecoration: "underline",
-                fontWeight: 500,
+                fontWeight: 700,
               }}
             >
               Use Cases
@@ -94,7 +109,7 @@ const Footer = () => {
               style={{
                 color: "#fff",
                 textDecoration: "underline",
-                fontWeight: 500,
+                fontWeight: 700,
               }}
             >
               Pricing
@@ -104,7 +119,7 @@ const Footer = () => {
               style={{
                 color: "#fff",
                 textDecoration: "underline",
-                fontWeight: 500,
+                fontWeight: 700,
               }}
             >
               Blog
@@ -185,7 +200,7 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Middle Row: Contact + Email */}
+        {/* Middle Row: Contact + Tagline */}
         <div
           style={{
             display: "flex",
@@ -200,7 +215,7 @@ const Footer = () => {
               style={{
                 background: "#A6FF6F",
                 color: "#23242A",
-                fontWeight: 600,
+                fontWeight: 900,
                 fontSize: 19,
                 padding: "6px 16px",
                 borderRadius: 6,
@@ -214,6 +229,7 @@ const Footer = () => {
               style={{
                 color: "#fff",
                 fontSize: 17,
+                fontWeight: 600,
                 marginTop: 10,
                 marginBottom: 10,
                 lineHeight: 1.6,
@@ -221,6 +237,7 @@ const Footer = () => {
             >
               <div>Email: ecell@iare.ac.in</div>
               <div>Phone: 555-567-8901</div>
+              <br />
               <div>
                 Address: Institute of Aeronautical Engineering
                 <br />
@@ -229,51 +246,43 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Join Mailing List */}
-          <form
-            onSubmit={handleSubscribe}
+          {/* Tagline */}
+          <div
             style={{
-              background: "#292A32",
+              background: "black",
               borderRadius: 16,
-              padding: "20px 24px",
+              padding: "24px 32px",
               display: "flex",
+              flexDirection: "column",
               alignItems: "center",
-              gap: 16,
+              justifyContent: "center",
+              textAlign: "center",
+              minWidth: 300,
               boxShadow: "0 2px 12px rgba(0,0,0,0.04)",
             }}
           >
-            <input
-              type="email"
-              placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+            <h2
               style={{
-                background: "#23242A",
-                color: "#fff",
-                border: "2px solid #B0B1B8",
-                borderRadius: 8,
-                padding: "12px 18px",
-                fontSize: 17,
-                outline: "none",
-                width: 240,
-              }}
-            />
-            <button
-              type="submit"
-              style={{
-                background: "#A6FF6F",
-                color: "#23242A",
-                fontWeight: 600,
-                fontSize: 17,
-                padding: "12px 24px",
-                borderRadius: 8,
-                border: "none",
-                cursor: "pointer",
+                fontSize: 35,
+                fontWeight: 800,
+                color: "#A6FF6F",
+                margin: 0,
+                marginBottom: 8,
               }}
             >
-              Join our mailing list
-            </button>
-          </form>
+              Ideate · Innovate · Incubate
+            </h2>
+            <p
+              style={{
+                fontSize: 16,
+                color: "#fff",
+                opacity: 0.9,
+                margin: 0,
+              }}
+            >
+              {/* Empowering ideas to become impactful ventures. */}
+            </p>
+          </div>
         </div>
 
         {/* Bottom */}
@@ -294,7 +303,7 @@ const Footer = () => {
             paddingBottom: 24,
           }}
         >
-          <span>© 2023 E-CELL IARE. All Rights Reserved.</span>
+          <span>© 2025 E-CELL IARE. All Rights Reserved.</span>
           <a href="#" style={{ color: "#B0B1B8", textDecoration: "underline" }}>
             Privacy Policy
           </a>
