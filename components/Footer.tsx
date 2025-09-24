@@ -121,7 +121,7 @@ const Footer = () => {
         {/* Bottom Footer Bar */}
         <div className="border-t border-gray-600 mt-8 pt-6">
           <div className="flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
-            <p>© 2023 Positivus. All Rights Reserved.</p>
+            <p>© 2025 e-cell. All Rights Reserved.</p>
             <a
               href="#"
               className="font-normal text-gray-300 cursor-pointer transition-colors hover:text-teal-600"
