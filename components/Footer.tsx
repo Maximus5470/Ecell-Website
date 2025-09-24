@@ -40,25 +40,25 @@ const Footer = () => {
             marginBottom: 32,
           }}
         >
-          {/* Left: Positivus Heading with Symbol */}
+          {/* Left: E-CELL IARE Heading with Symbol */}
           <div style={{ display: "flex", alignItems: "center", marginRight: 40 }}>
             <span style={{ display: "inline-flex", width: 32, height: 32, background: "#fff", borderRadius: "50%", alignItems: "center", justifyContent: "center", marginRight: 10 }}>
-              <img src="/mic_extras/bigstar.png" alt="Positivus Star" style={{ width: 22, height: 22 }} />
+              <img src="/mic_extras/bigstar.png" alt="E-CELL IARE Star" style={{ width: 22, height: 22 }} />
             </span>
             <h2
               style={{
                 color: "#fff",
-                fontSize: 22, // Increased from 20 to 22
+                fontSize: 22,
                 fontWeight: 700,
                 margin: 0,
               }}
             >
-              Positivus
+              E-CELL IARE
             </h2>
           </div>
 
           {/* Navigation */}
-          <nav style={{ display: "flex", gap: 32, fontSize: 18 }}> {/* Increased from 17 to 18 */}
+          <nav style={{ display: "flex", gap: 32, fontSize: 18 }}>
             <a
               href="#"
               style={{
@@ -201,7 +201,7 @@ const Footer = () => {
                 background: "#A6FF6F",
                 color: "#23242A",
                 fontWeight: 600,
-                fontSize: 19, // Increased from 18 to 19
+                fontSize: 19,
                 padding: "6px 16px",
                 borderRadius: 6,
                 display: "inline-block",
@@ -213,23 +213,23 @@ const Footer = () => {
             <div
               style={{
                 color: "#fff",
-                fontSize: 17, // Increased from 16 to 17
+                fontSize: 17,
                 marginTop: 10,
                 marginBottom: 10,
                 lineHeight: 1.6,
               }}
             >
-              <div>Email: info@positivus.com</div>
+              <div>Email: ecell@iare.ac.in</div>
               <div>Phone: 555-567-8901</div>
               <div>
-                Address: 1234 Main St
+                Address: Institute of Aeronautical Engineering
                 <br />
-                Moonstone City, Stardust State 12345
+                Dundigal, Hyderabad, Telangana 500043
               </div>
             </div>
           </div>
 
-          {/* Email Subscribe */}
+          {/* Join Mailing List */}
           <form
             onSubmit={handleSubscribe}
             style={{
@@ -253,7 +253,7 @@ const Footer = () => {
                 border: "2px solid #B0B1B8",
                 borderRadius: 8,
                 padding: "12px 18px",
-                fontSize: 17, // Increased from 16 to 17
+                fontSize: 17,
                 outline: "none",
                 width: 240,
               }}
@@ -264,14 +264,14 @@ const Footer = () => {
                 background: "#A6FF6F",
                 color: "#23242A",
                 fontWeight: 600,
-                fontSize: 17, // Increased from 16 to 17
+                fontSize: 17,
                 padding: "12px 24px",
                 borderRadius: 8,
                 border: "none",
                 cursor: "pointer",
               }}
             >
-              Subscribe to news
+              Join our mailing list
             </button>
           </form>
         </div>
@@ -290,11 +290,11 @@ const Footer = () => {
             alignItems: "center",
             justifyContent: "space-between",
             color: "#B0B1B8",
-            fontSize: 16, // Increased from 15 to 16
+            fontSize: 16,
             paddingBottom: 24,
           }}
         >
-          <span>© 2023 Positivus. All Rights Reserved.</span>
+          <span>© 2023 E-CELL IARE. All Rights Reserved.</span>
           <a href="#" style={{ color: "#B0B1B8", textDecoration: "underline" }}>
             Privacy Policy
           </a>
