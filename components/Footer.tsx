@@ -3,132 +3,301 @@ import React, { useState } from "react";
 
 const Footer = () => {
   const [email, setEmail] = useState("");
-
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
-    alert(`Subscribed with: ${email}`);
     setEmail("");
   };
 
   return (
-    <footer className="bg-white mt-16 flex justify-center">
-      {/* Centered Footer Box */}
-      <div className="bg-[#2B2B2B] max-w-5xl w-full mx-6 rounded-2xl shadow-lg px-10 py-10">
-        {/* Main Footer Content */}
-        <div className="flex flex-col md:flex-row items-start justify-between gap-10">
-          {/* Left Section: Logo and Contact Info */}
-          <div className="flex flex-col">
-            {/* Logo */}
-            <div className="flex items-center gap-2 mb-4">
-              <span className="text-white text-2xl">★</span>
-              <h3 className="text-white font-semibold text-lg">e-cell</h3>
-            </div>
-
-            {/* Contact Information */}
-            <div className="text-gray-300 text-sm leading-relaxed space-y-1">
-              <p>
-                <span className="font-medium text-white">Email:</span>{" "}
-                info@ecell.com
-              </p>
-              <p>
-                <span className="font-medium text-white">Phone:</span>{" "}
-                555-567-8901
-              </p>
-              <p>
-                <span className="font-medium text-white">Address:</span> 1234
-                Main St
-              </p>
-              <p>Moonstone City, Stardust State 12345</p>
-            </div>
+    <footer
+      style={{
+        background: "white",
+        width: "100%",
+        padding: 0,
+        margin: 0,
+        position: "fixed",   // keeps footer stuck to bottom
+        bottom: 0,
+        left: 0,
+        zIndex: 1000,
+      }}
+    >
+      <div
+        style={{
+          maxWidth: 1300,
+          margin: "0 auto",
+          borderRadius: "32px 32px 0 0",
+          background: "black",
+          boxShadow: "0 2px 16px rgba(0,0,0,0.08)",
+          padding: "48px 48px 0 48px",
+        }}
+      >
+        {/* Top Row: Logo + Navigation & Social Icons */}
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            marginBottom: 32,
+          }}
+        >
+          {/* Left: Positivus Heading with Symbol */}
+          <div style={{ display: "flex", alignItems: "center", marginRight: 40 }}>
+            <span style={{ display: "inline-flex", width: 32, height: 32, background: "#fff", borderRadius: "50%", alignItems: "center", justifyContent: "center", marginRight: 10 }}>
+              <img src="/mic_extras/bigstar.png" alt="Positivus Star" style={{ width: 22, height: 22 }} />
+            </span>
+            <h2
+              style={{
+                color: "#fff",
+                fontSize: 22, // Increased from 20 to 22
+                fontWeight: 700,
+                margin: 0,
+              }}
+            >
+              Positivus
+            </h2>
           </div>
 
-          {/* Center Section: Navigation Links */}
-          <div className="flex flex-col md:flex-row gap-6 md:gap-12 text-sm">
+          {/* Navigation */}
+          <nav style={{ display: "flex", gap: 32, fontSize: 18 }}> {/* Increased from 17 to 18 */}
             <a
               href="#"
-              className="font-normal text-gray-300 cursor-pointer transition-colors hover:text-teal-600"
+              style={{
+                color: "#fff",
+                textDecoration: "underline",
+                fontWeight: 500,
+              }}
             >
-              About Us
+              About us
             </a>
             <a
               href="#"
-              className="font-normal text-gray-300 cursor-pointer transition-colors hover:text-teal-600"
+              style={{
+                color: "#fff",
+                textDecoration: "underline",
+                fontWeight: 500,
+              }}
             >
               Services
             </a>
             <a
               href="#"
-              className="font-normal text-gray-300 cursor-pointer transition-colors hover:text-teal-600"
+              style={{
+                color: "#fff",
+                textDecoration: "underline",
+                fontWeight: 500,
+              }}
             >
               Use Cases
             </a>
             <a
               href="#"
-              className="font-normal text-gray-300 cursor-pointer transition-colors hover:text-teal-600"
+              style={{
+                color: "#fff",
+                textDecoration: "underline",
+                fontWeight: 500,
+              }}
             >
               Pricing
             </a>
             <a
               href="#"
-              className="font-normal text-gray-300 cursor-pointer transition-colors hover:text-teal-600"
+              style={{
+                color: "#fff",
+                textDecoration: "underline",
+                fontWeight: 500,
+              }}
             >
               Blog
             </a>
-          </div>
+          </nav>
 
-          {/* Right Section: Social Media Icons */}
-          <div className="flex gap-3">
-            <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center cursor-pointer hover:bg-gray-200 transition">
-              <span className="text-black text-sm">in</span>
-            </div>
-            <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center cursor-pointer hover:bg-gray-200 transition">
-              <span className="text-black text-sm">f</span>
-            </div>
-            <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center cursor-pointer hover:bg-gray-200 transition">
-              <span className="text-black text-sm">@</span>
-            </div>
-          </div>
-        </div>
-
-        {/* Newsletter Subscription Section */}
-        <div className="mt-10 bg-[#191A23] rounded-lg p-6">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <h4 className="text-white font-semibold text-lg">
-              Subscribe to news
-            </h4>
-            <form
-              onSubmit={handleSubscribe}
-              className="flex items-center gap-3 w-full md:w-auto"
-            >
-              <input
-                type="email"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Email"
-                className="flex-grow md:flex-grow-0 bg-[#2B2B2B] border border-gray-600 rounded px-4 py-2 text-white placeholder-gray-400 outline-none focus:border-teal-600 transition"
-              />
-              <button
-                type="submit"
-                className="bg-teal-600 text-white px-6 py-2 rounded font-medium hover:bg-teal-500 transition-colors"
-              >
-                Subscribe
-              </button>
-            </form>
-          </div>
-        </div>
-
-        {/* Bottom Footer Bar */}
-        <div className="border-t border-gray-600 mt-8 pt-6">
-          <div className="flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
-            <p>© 2025 e-cell. All Rights Reserved.</p>
+          {/* Social Icons */}
+          <div style={{ display: "flex", gap: 16 }}>
+            {/* LinkedIn */}
             <a
               href="#"
-              className="font-normal text-gray-300 cursor-pointer transition-colors hover:text-teal-600"
+              aria-label="LinkedIn"
+              style={{
+                background: "#fff",
+                borderRadius: "50%",
+                width: 36,
+                height: 36,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                border: "2px solid #23242A",
+              }}
             >
-              Privacy Policy
+              <svg width="18" height="18" fill="currentColor">
+                <circle cx="9" cy="9" r="9" fill="#fff" />
+                <path
+                  d="M6.5 7.5h2v5h-2v-5zm1-1.5a1 1 0 110-2 1 1 0 010 2zm2.5 1.5h2v.7c.3-.4.9-.7 1.5-.7 1.1 0 2 .8 2 1.8v3.2h-2v-2.4c0-.5-.4-.8-1-.8s-1 .3-1 .8v2.4h-2v-5z"
+                  fill="#23242A"
+                />
+              </svg>
+            </a>
+            {/* Facebook */}
+            <a
+              href="#"
+              aria-label="Facebook"
+              style={{
+                background: "#fff",
+                borderRadius: "50%",
+                width: 36,
+                height: 36,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                border: "2px solid #23242A",
+              }}
+            >
+              <svg width="18" height="18" fill="currentColor">
+                <circle cx="9" cy="9" r="9" fill="#fff" />
+                <path
+                  d="M11.5 7.5h1.2V6h-1.2c-.9 0-1.6.7-1.6 1.6v.8H8v1.6h1.2v3.2h1.6v-3.2h1.6l.4-1.6h-2z"
+                  fill="#23242A"
+                />
+              </svg>
+            </a>
+            {/* Twitter */}
+            <a
+              href="#"
+              aria-label="Twitter"
+              style={{
+                background: "#fff",
+                borderRadius: "50%",
+                width: 36,
+                height: 36,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                border: "2px solid #23242A",
+              }}
+            >
+              <svg width="18" height="18" fill="currentColor">
+                <circle cx="9" cy="9" r="9" fill="#fff" />
+                <path
+                  d="M14.5 6.5c-.4.2-.8.3-1.2.4.4-.2.7-.6.8-1-.4.2-.8.4-1.2.5-.4-.4-1-.7-1.6-.7-1.2 0-2.1 1-2.1 2.1 0 .2 0 .4.1.6-1.7-.1-3.2-.9-4.2-2.1-.2.4-.3.7-.3 1.1 0 .7.4 1.3 1 1.6-.4 0-.7-.1-1-.3v.1c0 1 .7 1.8 1.6 2-.2.1-.5.1-.7.1-.2 0-.3 0-.5-.1.3.9 1.1 1.5 2.1 1.5-1 .8-2.2 1.2-3.5 1.2-.2 0-.4 0-.6-.1 1.2.8 2.6 1.3 4.1 1.3 4.9 0 7.6-4.1 7.6-7.6v-.3c.5-.4.8-.7 1.1-1.1z"
+                  fill="#23242A"
+                />
+              </svg>
             </a>
           </div>
+        </div>
+
+        {/* Middle Row: Contact + Email */}
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            gap: 32,
+            marginBottom: 32,
+          }}
+        >
+          {/* Contact */}
+          <div style={{ minWidth: 260 }}>
+            <h3
+              style={{
+                background: "#A6FF6F",
+                color: "#23242A",
+                fontWeight: 600,
+                fontSize: 19, // Increased from 18 to 19
+                padding: "6px 16px",
+                borderRadius: 6,
+                display: "inline-block",
+                marginBottom: 14,
+              }}
+            >
+              Contact us:
+            </h3>
+            <div
+              style={{
+                color: "#fff",
+                fontSize: 17, // Increased from 16 to 17
+                marginTop: 10,
+                marginBottom: 10,
+                lineHeight: 1.6,
+              }}
+            >
+              <div>Email: info@positivus.com</div>
+              <div>Phone: 555-567-8901</div>
+              <div>
+                Address: 1234 Main St
+                <br />
+                Moonstone City, Stardust State 12345
+              </div>
+            </div>
+          </div>
+
+          {/* Email Subscribe */}
+          <form
+            onSubmit={handleSubscribe}
+            style={{
+              background: "#292A32",
+              borderRadius: 16,
+              padding: "20px 24px",
+              display: "flex",
+              alignItems: "center",
+              gap: 16,
+              boxShadow: "0 2px 12px rgba(0,0,0,0.04)",
+            }}
+          >
+            <input
+              type="email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              style={{
+                background: "#23242A",
+                color: "#fff",
+                border: "2px solid #B0B1B8",
+                borderRadius: 8,
+                padding: "12px 18px",
+                fontSize: 17, // Increased from 16 to 17
+                outline: "none",
+                width: 240,
+              }}
+            />
+            <button
+              type="submit"
+              style={{
+                background: "#A6FF6F",
+                color: "#23242A",
+                fontWeight: 600,
+                fontSize: 17, // Increased from 16 to 17
+                padding: "12px 24px",
+                borderRadius: 8,
+                border: "none",
+                cursor: "pointer",
+              }}
+            >
+              Subscribe to news
+            </button>
+          </form>
+        </div>
+
+        {/* Bottom */}
+        <hr
+          style={{
+            border: "none",
+            borderTop: "2px solid #393A40",
+            margin: "32px 0 18px 0",
+          }}
+        />
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            color: "#B0B1B8",
+            fontSize: 16, // Increased from 15 to 16
+            paddingBottom: 24,
+          }}
+        >
+          <span>© 2023 Positivus. All Rights Reserved.</span>
+          <a href="#" style={{ color: "#B0B1B8", textDecoration: "underline" }}>
+            Privacy Policy
+          </a>
         </div>
       </div>
     </footer>
