@@ -9,7 +9,7 @@ export default function Home() {
             {/*<Navbar />*/}
             <Hero />
             {/* Add your other sections here */}
-            <ContactUs />
+            {/* <ContactUs /> */}
             {/*<Footer />*/}
         </main>
     );
