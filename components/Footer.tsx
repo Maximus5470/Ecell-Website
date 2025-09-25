@@ -3,238 +3,87 @@ import React, { useState } from "react";
 
 const Footer = () => {
   const [email, setEmail] = useState("");
+  const [remarks, setRemarks] = useState("");
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
     setEmail("");
+    setRemarks("");
   };
 
   return (
-    <footer
-      style={{
-        background: "white",
-        width: "100%",
-        padding: 0,
-        margin: 0,
-        position: "fixed", // keeps footer stuck to bottom
-        bottom: 0,
-        left: 0,
-        zIndex: 1000,
-      }}
-    >
-      <div
-        style={{
-          maxWidth: 1300,
-          margin: "0 auto",
-          borderRadius: "32px 32px 0 0",
-          background: "black",
-          boxShadow: "0 2px 16px rgba(0,0,0,0.08)",
-          padding: "48px 48px 0 48px",
-        }}
-      >
+    <footer className="bg-white w-full p-0 m-0">
+      <div className="max-w-[1300px] mx-auto rounded-t-[32px] bg-[#191A23] shadow-[0_2px_16px_rgba(0,0,0,0.08)] pt-12 px-12">
         {/* Top Row: Logo + Navigation & Social Icons */}
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            marginBottom: 32,
-          }}
-        >
+        <div className="flex items-center justify-between mb-8">
           {/* Left: E-CELL IARE Heading with Symbol */}
-          <div style={{ display: "flex", alignItems: "center", marginRight: 40 }}>
-            <span
-              style={{
-                display: "inline-flex",
-                width: 32,
-                height: 32,
-                background: "#fff",
-                borderRadius: "50%",
-                alignItems: "center",
-                justifyContent: "center",
-                marginRight: 10,
-              }}
-            >
-              <img
-                src="/mic_extras/bigstar.png"
-                alt="E-CELL IARE Star"
-                style={{ width: 22, height: 22 }}
-              />
-            </span>
-            <h2
-              style={{
-                color: "#fff",
-                fontSize: 22,
-                fontWeight: 1000,
-                margin: 0,
-              }}
-            >
+          <div className="flex items-center mr-10">
+            <h2 className="text-white text-xl font-black m-0">
               E-CELL IARE
             </h2>
           </div>
 
           {/* Navigation */}
-          <nav style={{ display: "flex", gap: 32, fontSize: 18 }}>
-            <a
-              href="#"
-              style={{
-                color: "#fff",
-                textDecoration: "underline",
-                fontWeight: 700,
-              }}
-            >
+          <nav className="flex gap-8 text-lg">
+            <a href="#" className="text-white underline hover:text-gray-300">
+              Home
+            </a>
+            <a href="#" className="text-white underline hover:text-gray-300">
               About us
             </a>
-            <a
-              href="#"
-              style={{
-                color: "#fff",
-                textDecoration: "underline",
-                fontWeight: 700,
-              }}
-            >
-              Services
+            <a href="#" className="text-white underline hover:text-gray-300">
+              Teams
             </a>
-            <a
-              href="#"
-              style={{
-                color: "#fff",
-                textDecoration: "underline",
-                fontWeight: 700,
-              }}
-            >
-              Use Cases
+            <a href="#" className="text-white underline hover:text-gray-300">
+              Startups
             </a>
-            <a
-              href="#"
-              style={{
-                color: "#fff",
-                textDecoration: "underline",
-                fontWeight: 700,
-              }}
-            >
-              Pricing
-            </a>
-            <a
-              href="#"
-              style={{
-                color: "#fff",
-                textDecoration: "underline",
-                fontWeight: 700,
-              }}
-            >
-              Blog
+            <a href="#" className="text-white underline hover:text-gray-300">
+              Collaborators
             </a>
           </nav>
 
           {/* Social Icons */}
-          <div style={{ display: "flex", gap: 16 }}>
+          <div className="flex gap-4">
             {/* LinkedIn */}
             <a
               href="#"
               aria-label="LinkedIn"
-              style={{
-                background: "#fff",
-                borderRadius: "50%",
-                width: 36,
-                height: 36,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                border: "2px solid #23242A",
-              }}
+              className="bg-white rounded-full w-9 h-9 flex items-center justify-center border-2 border-gray-800 hover:bg-gray-100 transition-colors"
             >
-              <svg width="18" height="18" fill="currentColor">
-                <circle cx="9" cy="9" r="9" fill="#fff" />
-                <path
-                  d="M6.5 7.5h2v5h-2v-5zm1-1.5a1 1 0 110-2 1 1 0 010 2zm2.5 1.5h2v.7c.3-.4.9-.7 1.5-.7 1.1 0 2 .8 2 1.8v3.2h-2v-2.4c0-.5-.4-.8-1-.8s-1 .3-1 .8v2.4h-2v-5z"
-                  fill="#23242A"
-                />
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#000000">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
               </svg>
             </a>
             {/* Facebook */}
             <a
               href="#"
               aria-label="Facebook"
-              style={{
-                background: "#fff",
-                borderRadius: "50%",
-                width: 36,
-                height: 36,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                border: "2px solid #23242A",
-              }}
+              className="bg-white rounded-full w-9 h-9 flex items-center justify-center border-2 border-gray-800 hover:bg-gray-100 transition-colors"
             >
-              <svg width="18" height="18" fill="currentColor">
-                <circle cx="9" cy="9" r="9" fill="#fff" />
-                <path
-                  d="M11.5 7.5h1.2V6h-1.2c-.9 0-1.6.7-1.6 1.6v.8H8v1.6h1.2v3.2h1.6v-3.2h1.6l.4-1.6h-2z"
-                  fill="#23242A"
-                />
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#000000">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
               </svg>
             </a>
-            {/* Twitter */}
+            {/* X */}
             <a
               href="#"
-              aria-label="Twitter"
-              style={{
-                background: "#fff",
-                borderRadius: "50%",
-                width: 36,
-                height: 36,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                border: "2px solid #23242A",
-              }}
+              aria-label="X"
+              className="bg-white rounded-full w-9 h-9 flex items-center justify-center border-2 border-gray-800 hover:bg-gray-100 transition-colors"
             >
-              <svg width="18" height="18" fill="currentColor">
-                <circle cx="9" cy="9" r="9" fill="#fff" />
-                <path
-                  d="M14.5 6.5c-.4.2-.8.3-1.2.4.4-.2.7-.6.8-1-.4.2-.8.4-1.2.5-.4-.4-1-.7-1.6-.7-1.2 0-2.1 1-2.1 2.1 0 .2 0 .4.1.6-1.7-.1-3.2-.9-4.2-2.1-.2.4-.3.7-.3 1.1 0 .7.4 1.3 1 1.6-.4 0-.7-.1-1-.3v.1c0 1 .7 1.8 1.6 2-.2.1-.5.1-.7.1-.2 0-.3 0-.5-.1.3.9 1.1 1.5 2.1 1.5-1 .8-2.2 1.2-3.5 1.2-.2 0-.4 0-.6-.1 1.2.8 2.6 1.3 4.1 1.3 4.9 0 7.6-4.1 7.6-7.6v-.3c.5-.4.8-.7 1.1-1.1z"
-                  fill="#23242A"
-                />
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="#000000">
+                <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/>
               </svg>
             </a>
           </div>
         </div>
 
         {/* Middle Row: Contact + Tagline */}
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            gap: 32,
-            marginBottom: 32,
-          }}
-        >
+        <div className="flex justify-between gap-8 mb-8">
           {/* Contact */}
-          <div style={{ minWidth: 260 }}>
-            <h3
-              style={{
-                background: "#A6FF6F",
-                color: "#23242A",
-                fontWeight: 900,
-                fontSize: 19,
-                padding: "6px 16px",
-                borderRadius: 6,
-                display: "inline-block",
-                marginBottom: 14,
-              }}
-            >
+          <div className="min-w-[260px]">
+            <h3 className="bg-[#A6FF6F] text-gray-800 font-black text-lg px-4 py-2 rounded inline-block mb-4">
               Contact us:
             </h3>
-            <div
-              style={{
-                color: "#fff",
-                fontSize: 17,
-                fontWeight: 600,
-                marginTop: 10,
-                marginBottom: 10,
-                lineHeight: 1.6,
-              }}
-            >
+            <div className="text-white text-lg mt-3 mb-3 leading-relaxed">
               <div>Email: ecell@iare.ac.in</div>
               <div>Phone: 555-567-8901</div>
               <br />
@@ -246,65 +95,45 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Tagline */}
-          <div
-            style={{
-              background: "black",
-              borderRadius: 16,
-              padding: "24px 32px",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center",
-              textAlign: "center",
-              minWidth: 300,
-              boxShadow: "0 2px 12px rgba(0,0,0,0.04)",
-            }}
-          >
-            <h2
-              style={{
-                fontSize: 35,
-                fontWeight: 800,
-                color: "#A6FF6F",
-                margin: 0,
-                marginBottom: 8,
-              }}
-            >
-              Ideate · Innovate · Incubate
-            </h2>
-            <p
-              style={{
-                fontSize: 16,
-                color: "#fff",
-                opacity: 0.9,
-                margin: 0,
-              }}
-            >
-              {/* Empowering ideas to become impactful ventures. */}
-            </p>
+          {/* Contact Form */}
+          <div className="bg-[#3C3D47] rounded-2xl p-6 px-10 flex flex-col flex-1 max-w-[750px]">
+            <div className="mb-4">
+              <h3 className="text-white text-lg font-semibold mb-1">Get in Touch</h3>
+              <p className="text-gray-300 text-sm">Share your thoughts with us</p>
+            </div>
+            <form onSubmit={handleSubscribe} className="w-full flex flex-col gap-4">
+              <div className="flex gap-6">
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Email"
+                  required
+                  className="flex-1 px-6 py-3 bg-transparent border border-gray-500 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-[#A6FF6F] focus:border-2 transition-colors"
+                />
+                <button
+                  type="submit"
+                  className="bg-[#A6FF6F] text-gray-800 font-semibold px-12 py-3 rounded-lg hover:bg-[#95E55F] transition-colors whitespace-nowrap"
+                >
+                  Submit
+                </button>
+              </div>
+              <textarea
+                value={remarks}
+                onChange={(e) => setRemarks(e.target.value)}
+                placeholder="Your remarks or feedback..."
+                rows={3}
+                className="w-full px-6 py-3 bg-transparent border border-gray-500 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-[#A6FF6F] focus:border-2 transition-colors resize-none"
+              />
+            </form>
           </div>
         </div>
 
         {/* Bottom */}
-        <hr
-          style={{
-            border: "none",
-            borderTop: "2px solid #393A40",
-            margin: "32px 0 18px 0",
-          }}
-        />
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            color: "#B0B1B8",
-            fontSize: 16,
-            paddingBottom: 24,
-          }}
-        >
+        <hr className="border-t-2 border-white my-8 mt-12 mb-8" />
+        <div className="flex items-center gap-12 font-bold text-gray-200 text-base pb-6">
           <span>© 2025 E-CELL IARE. All Rights Reserved.</span>
-          <a href="#" style={{ color: "#B0B1B8", textDecoration: "underline" }}>
+          <a href="#" className="text-gray-400 underline hover:text-gray-200">
             Privacy Policy
           </a>
         </div>
