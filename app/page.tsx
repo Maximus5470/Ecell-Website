@@ -1,7 +1,4 @@
 import Hero from "@/components/Hero";
-import Navbar from "@/components/Navbar";
-import ContactUs from "@/components/ContactUs";
-import Footer from "@/components/Footer";
 import WorkingProcess from "@/components/WorkingProcessComponent";
 
 const workingProcessSteps = [
