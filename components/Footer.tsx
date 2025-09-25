@@ -3,132 +3,139 @@ import React, { useState } from "react";
 
 const Footer = () => {
   const [email, setEmail] = useState("");
-
+  const [remarks, setRemarks] = useState("");
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
-    alert(`Subscribed with: ${email}`);
     setEmail("");
+    setRemarks("");
   };
 
   return (
-    <footer className="bg-white mt-16 flex justify-center">
-      {/* Centered Footer Box */}
-      <div className="bg-[#2B2B2B] max-w-5xl w-full mx-6 rounded-2xl shadow-lg px-10 py-10">
-        {/* Main Footer Content */}
-        <div className="flex flex-col md:flex-row items-start justify-between gap-10">
-          {/* Left Section: Logo and Contact Info */}
-          <div className="flex flex-col">
-            {/* Logo */}
-            <div className="flex items-center gap-2 mb-4">
-              <span className="text-white text-2xl">★</span>
-              <h3 className="text-white font-semibold text-lg">e-cell</h3>
-            </div>
-
-            {/* Contact Information */}
-            <div className="text-gray-300 text-sm leading-relaxed space-y-1">
-              <p>
-                <span className="font-medium text-white">Email:</span>{" "}
-                info@ecell.com
-              </p>
-              <p>
-                <span className="font-medium text-white">Phone:</span>{" "}
-                555-567-8901
-              </p>
-              <p>
-                <span className="font-medium text-white">Address:</span> 1234
-                Main St
-              </p>
-              <p>Moonstone City, Stardust State 12345</p>
-            </div>
+    <footer className="bg-white w-full p-0 m-0">
+      <div className="max-w-[1300px] mx-auto rounded-t-[32px] bg-[#191A23] shadow-[0_2px_16px_rgba(0,0,0,0.08)] pt-12 px-12">
+        {/* Top Row: Logo + Navigation & Social Icons */}
+        <div className="flex items-center justify-between mb-8">
+          {/* Left: E-CELL IARE Heading with Symbol */}
+          <div className="flex items-center mr-10">
+            <h2 className="text-white text-xl font-black m-0">
+              E-CELL IARE
+            </h2>
           </div>
 
-          {/* Center Section: Navigation Links */}
-          <div className="flex flex-col md:flex-row gap-6 md:gap-12 text-sm">
-            <a
-              href="#"
-              className="font-normal text-gray-300 cursor-pointer transition-colors hover:text-teal-600"
-            >
-              About Us
+          {/* Navigation */}
+          <nav className="flex gap-8 text-lg">
+            <a href="#" className="text-white underline hover:text-gray-300">
+              Home
             </a>
-            <a
-              href="#"
-              className="font-normal text-gray-300 cursor-pointer transition-colors hover:text-teal-600"
-            >
-              Services
+            <a href="#" className="text-white underline hover:text-gray-300">
+              About us
             </a>
-            <a
-              href="#"
-              className="font-normal text-gray-300 cursor-pointer transition-colors hover:text-teal-600"
-            >
-              Use Cases
+            <a href="#" className="text-white underline hover:text-gray-300">
+              Teams
             </a>
-            <a
-              href="#"
-              className="font-normal text-gray-300 cursor-pointer transition-colors hover:text-teal-600"
-            >
-              Pricing
+            <a href="#" className="text-white underline hover:text-gray-300">
+              Startups
             </a>
-            <a
-              href="#"
-              className="font-normal text-gray-300 cursor-pointer transition-colors hover:text-teal-600"
-            >
-              Blog
+            <a href="#" className="text-white underline hover:text-gray-300">
+              Collaborators
             </a>
-          </div>
+          </nav>
 
-          {/* Right Section: Social Media Icons */}
-          <div className="flex gap-3">
-            <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center cursor-pointer hover:bg-gray-200 transition">
-              <span className="text-black text-sm">in</span>
-            </div>
-            <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center cursor-pointer hover:bg-gray-200 transition">
-              <span className="text-black text-sm">f</span>
-            </div>
-            <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center cursor-pointer hover:bg-gray-200 transition">
-              <span className="text-black text-sm">@</span>
-            </div>
+          {/* Social Icons */}
+          <div className="flex gap-4">
+            {/* LinkedIn */}
+            <a
+              href="#"
+              aria-label="LinkedIn"
+              className="bg-white rounded-full w-9 h-9 flex items-center justify-center border-2 border-gray-800 hover:bg-gray-100 transition-colors"
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#000000">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+              </svg>
+            </a>
+            {/* Facebook */}
+            <a
+              href="#"
+              aria-label="Facebook"
+              className="bg-white rounded-full w-9 h-9 flex items-center justify-center border-2 border-gray-800 hover:bg-gray-100 transition-colors"
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#000000">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+              </svg>
+            </a>
+            {/* X */}
+            <a
+              href="#"
+              aria-label="X"
+              className="bg-white rounded-full w-9 h-9 flex items-center justify-center border-2 border-gray-800 hover:bg-gray-100 transition-colors"
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="#000000">
+                <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/>
+              </svg>
+            </a>
           </div>
         </div>
 
-        {/* Newsletter Subscription Section */}
-        <div className="mt-10 bg-[#191A23] rounded-lg p-6">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <h4 className="text-white font-semibold text-lg">
-              Subscribe to news
-            </h4>
-            <form
-              onSubmit={handleSubscribe}
-              className="flex items-center gap-3 w-full md:w-auto"
-            >
-              <input
-                type="email"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Email"
-                className="flex-grow md:flex-grow-0 bg-[#2B2B2B] border border-gray-600 rounded px-4 py-2 text-white placeholder-gray-400 outline-none focus:border-teal-600 transition"
+        {/* Middle Row: Contact + Tagline */}
+        <div className="flex justify-between gap-8 mb-8">
+          {/* Contact */}
+          <div className="min-w-[260px]">
+            <h3 className="bg-[#A6FF6F] text-gray-800 font-black text-lg px-4 py-2 rounded inline-block mb-4">
+              Contact us:
+            </h3>
+            <div className="text-white text-lg mt-3 mb-3 leading-relaxed">
+              <div>Email: ecell@iare.ac.in</div>
+              <div>Phone: 555-567-8901</div>
+              <br />
+              <div>
+                Address: Institute of Aeronautical Engineering
+                <br />
+                Dundigal, Hyderabad, Telangana 500043
+              </div>
+            </div>
+          </div>
+
+          {/* Contact Form */}
+          <div className="bg-[#3C3D47] rounded-2xl p-6 px-10 flex flex-col flex-1 max-w-[750px]">
+            <div className="mb-4">
+              <h3 className="text-white text-lg font-semibold mb-1">Get in Touch</h3>
+              <p className="text-gray-300 text-sm">Share your thoughts with us</p>
+            </div>
+            <form onSubmit={handleSubscribe} className="w-full flex flex-col gap-4">
+              <div className="flex gap-6">
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Email"
+                  required
+                  className="flex-1 px-6 py-3 bg-transparent border border-gray-500 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-[#A6FF6F] focus:border-2 transition-colors"
+                />
+                <button
+                  type="submit"
+                  className="bg-[#A6FF6F] text-gray-800 font-semibold px-12 py-3 rounded-lg hover:bg-[#95E55F] transition-colors whitespace-nowrap"
+                >
+                  Submit
+                </button>
+              </div>
+              <textarea
+                value={remarks}
+                onChange={(e) => setRemarks(e.target.value)}
+                placeholder="Your remarks or feedback..."
+                rows={3}
+                className="w-full px-6 py-3 bg-transparent border border-gray-500 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-[#A6FF6F] focus:border-2 transition-colors resize-none"
               />
-              <button
-                type="submit"
-                className="bg-teal-600 text-white px-6 py-2 rounded font-medium hover:bg-teal-500 transition-colors"
-              >
-                Subscribe
-              </button>
             </form>
           </div>
         </div>
 
-        {/* Bottom Footer Bar */}
-        <div className="border-t border-gray-600 mt-8 pt-6">
-          <div className="flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
-            <p>© 2025 e-cell. All Rights Reserved.</p>
-            <a
-              href="#"
-              className="font-normal text-gray-300 cursor-pointer transition-colors hover:text-teal-600"
-            >
-              Privacy Policy
-            </a>
-          </div>
+        {/* Bottom */}
+        <hr className="border-t-2 border-white my-8 mt-12 mb-8" />
+        <div className="flex items-center gap-12 font-bold text-gray-200 text-base pb-6">
+          <span>© 2025 E-CELL IARE. All Rights Reserved.</span>
+          <a href="#" className="text-gray-400 underline hover:text-gray-200">
+            Privacy Policy
+          </a>
         </div>
       </div>
     </footer>
