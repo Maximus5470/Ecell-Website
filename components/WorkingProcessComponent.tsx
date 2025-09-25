@@ -17,9 +17,7 @@ interface WorkingProcessProps {
 }
 
 const WorkingProcess: React.FC<WorkingProcessProps> = ({ 
-  steps, 
-  title = "Our Working Process", 
-  subtitle = "Step-by-Step Guide to Achieving Your Business Goals" 
+  steps
 }) => {
   const [expanded, setExpanded] = useState<number | null>(0);
 
