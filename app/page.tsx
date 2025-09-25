@@ -49,6 +49,7 @@ export default function Home() {
   return (
     <div>
       <Hero/>
+        <ServicesSection/>
       <div className="bg-gray-50 py-16">
         <div className="font-sans max-w-7xl mx-auto px-8 mb-12">
           <div className="flex flex-col lg:flex-row lg:items-baseline mb-12">

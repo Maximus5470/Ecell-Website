@@ -44,6 +44,11 @@ const servicesData: ServiceData[] = [
 
 export default function ServicesSection(): React.JSX.Element {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+
+  const handleToggleExpand = (index: number) => {
+    setExpandedIndex(expandedIndex === index ? null : index);
+  };
 
   return (
     <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
@@ -61,24 +66,32 @@ export default function ServicesSection(): React.JSX.Element {
         </div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 transition-all duration-700 ease-in-out">
+        <div className={`transition-all duration-700 ease-in-out ${
+          expandedIndex !== null ? 'grid grid-cols-1 gap-6' : 'grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8'
+        }`}>
           {servicesData.map((service, index) => (
             <div
               key={index}
-              className={`transition-all duration-700 ease-in-out transform-gpu ${
-                hoveredIndex === null
+              className={`transition-all duration-500 ease-out transform-gpu ${
+                expandedIndex !== null
+                  ? expandedIndex === index
+                    ? 'scale-100 translate-y-0 z-10 relative'
+                    : 'scale-95 translate-y-4 opacity-60 pointer-events-none'
+                  : hoveredIndex === null
                   ? 'scale-100 translate-y-0'
                   : hoveredIndex === index
-                  ? 'scale-110 -translate-y-4 z-10 relative'
-                  : 'scale-95 translate-y-8 opacity-80'
+                  ? 'scale-105 -translate-y-2 z-10 relative shadow-lg'
+                  : 'scale-98 translate-y-2 opacity-90'
               }`}
-              onMouseEnter={() => setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
+              onMouseEnter={() => expandedIndex === null && setHoveredIndex(index)}
+              onMouseLeave={() => expandedIndex === null && setHoveredIndex(null)}
             >
               <ServiceCard
                 title={service.title}
                 description={service.description}
                 icon={service.icon}
+                isExpanded={expandedIndex === index}
+                onToggleExpand={() => handleToggleExpand(index)}
               />
             </div>
           ))}
