@@ -48,7 +48,7 @@ export default function Home() {
       <div className="bg-gray-50 py-16">
         <div className="font-sans max-w-7xl mx-auto px-8 mb-12">
           <div className="flex flex-col lg:flex-row lg:items-baseline mb-12">
-            <span className="bg-[#B9FF66] text-black font-bold text-4xl px-8 py-4 rounded-lg mb-4 lg:mb-0 lg:mr-8">Our Working Process</span>
+            <span className="bg-[#B9FF66] text-black font-bold text-3xl px-8 py-4 rounded-lg mb-4 lg:mb-0 lg:mr-8">Our Working Process</span>
             <span className="text-gray-600 text-lg lg:text-xl">Step-by-Step Guide to Achieving Your Business Goals</span>
           </div>
         </div>
