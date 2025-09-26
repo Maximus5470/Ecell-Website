@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 
 interface ServiceCardProps {
@@ -74,18 +74,37 @@ export default function ServiceCard({ title, description, icon, isExpanded = fal
   const isDarkTheme = title === 'Social Media Marketing' || title === 'Analytics and Tracking';
   const [isCollapsing, setIsCollapsing] = useState(false);
   const [showContent, setShowContent] = useState(isExpanded);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Check if we're on mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    // Initial check
+    checkMobile();
+    
+    // Add event listener for window resize
+    window.addEventListener('resize', checkMobile);
+    
+    // Cleanup
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   React.useEffect(() => {
     if (isExpanded) {
       // When expanding, show content after card grows
-      setTimeout(() => setShowContent(true), 500);
+      const delay = isMobile ? 400 : 500;
+      setTimeout(() => setShowContent(true), delay);
     } else {
       // When collapsing, hide content first
       setShowContent(false);
       setIsCollapsing(true);
-      setTimeout(() => setIsCollapsing(false), 600);
+      const delay = isMobile ? 500 : 600;
+      setTimeout(() => setIsCollapsing(false), delay);
     }
-  }, [isExpanded]);
+  }, [isExpanded, isMobile]);
 
   const handleToggle = () => {
     if (onToggleExpand) onToggleExpand();
@@ -175,15 +194,16 @@ export default function ServiceCard({ title, description, icon, isExpanded = fal
     <div
       className={`relative rounded-[45px] flex flex-col justify-between ${styles.cardBg} transition-all ${
         isExpanded 
-          ? 'duration-800 ease-out p-6 sm:p-8 min-h-[600px] sm:min-h-[700px] w-[210%] shadow-2xl border-2 overflow-visible'
+          ? 'duration-800 ease-out p-6 sm:p-8 min-h-[600px] sm:min-h-[700px] md:w-[210%] w-full shadow-2xl border-2 overflow-visible'
           : 'duration-600 ease-in p-6 sm:p-8 min-h-[280px] sm:min-h-[320px] lg:min-h-[350px] w-full shadow-md overflow-hidden'
       }`}
       style={{
         border: '1px solid #191A23',
         borderBottomWidth: '8px',
         borderBottomColor: '#191A23',
-        transformOrigin: cardPosition === 'left' ? 'top left' : 'top right',
-        ...(isExpanded && cardPosition === 'right' && {
+        transformOrigin: isMobile ? 'top center' : cardPosition === 'left' ? 'top left' : 'top right',
+        margin: '0.4rem',
+        ...(isExpanded && cardPosition === 'right' && !isMobile && {
           marginLeft: '-110%'
         })
       }}
@@ -191,8 +211,8 @@ export default function ServiceCard({ title, description, icon, isExpanded = fal
       {/* Illustration */}
       <div className={`absolute right-2 transition-all ${
         isExpanded 
-          ? 'duration-1000 ease-out top-6 w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80 opacity-50' 
-          : 'duration-800 ease-in top-1/2 transform -translate-y-1/2 w-52 h-52 sm:w-60 sm:h-60 lg:w-72 lg:h-72 opacity-80'
+          ? 'duration-1000 ease-out top-6 w-48 h-48 sm:w-64 sm:h-64 lg:w-80 lg:h-80 opacity-50' 
+          : 'duration-800 ease-in top-1/2 transform -translate-y-1/2 w-40 h-40 sm:w-52 sm:h-52 lg:w-72 lg:h-72 opacity-80'
       }`}>
         <Image 
           src={icon} 
@@ -205,7 +225,7 @@ export default function ServiceCard({ title, description, icon, isExpanded = fal
 
       {/* Content */}
       <div className={`relative z-10 flex flex-col justify-between h-full ${
-        isExpanded ? 'pr-72 sm:pr-80 lg:pr-88' : 'pr-56 sm:pr-64 lg:pr-76'
+        isExpanded ? 'pr-48 sm:pr-72 md:pr-80 lg:pr-88' : 'pr-40 sm:pr-56 md:pr-64 lg:pr-76'
       } transition-all duration-800`}>
         <div>
           {renderTitle()}
