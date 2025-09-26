@@ -116,7 +116,7 @@ const Hero = () => {
             </div>
             
             {/* Play button */}
-            <div className="absolute top-32 right-12 sm:top-40 sm:right-6 md:top-44 md:right-46 lg:right-8 z-20 float-3">
+            <div className="absolute top-32 right-12 sm:top-40 sm:right-6 md:top-44 md:right-46 lg:right-8 lg:top-40 z-20 float-3">
               <Image 
                 src="/mic_extras/play.png" 
                 alt="Play" 
@@ -138,7 +138,7 @@ const Hero = () => {
             </div>
             
             {/* Large black star - hide on mobile, show on larger screens */}
-            <div className="absolute top-54 left-4 sm:top-90 sm:left-6 md:top-72 md:left-50 lg:left-10 z-20 rotate-star-slow">
+            <div className="absolute top-54 left-4 sm:top-90 sm:left-6 md:top-72 md:left-50 lg:left-10 lg:top-90 z-20 rotate-star-slow">
               <Image 
                 src="/mic_extras/bigstar.png" 
                 alt="Big Star" 

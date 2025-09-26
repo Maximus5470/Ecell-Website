@@ -17,7 +17,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-white w-full p-0 m-0">
+    <footer className="bg-gray-50 w-full p-0 m-0">
       <div className="max-w-[1300px] mx-auto rounded-t-[20px] sm:rounded-t-[32px] bg-[#191A23] shadow-[0_2px_16px_rgba(0,0,0,0.08)] pt-8 sm:pt-12 px-4 sm:px-8 lg:px-12">
         {/* Top Row: Logo + Navigation & Social Icons */}
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-6 sm:mb-8 gap-4 lg:gap-0">

@@ -22,7 +22,8 @@ const WorkingProcess: React.FC<WorkingProcessProps> = ({
   const [expanded, setExpanded] = useState<number | null>(0);
 
   return (
-    <div className="font-sans max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="bg-gray-50 py-16">
+      <div className="font-sans max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       
       {steps.map((step, idx) => {
         const isOpen = expanded === idx;
@@ -58,7 +59,8 @@ const WorkingProcess: React.FC<WorkingProcessProps> = ({
           </div>
         );
       })}
-    </div>
+      </div>
+    </section>
   );
 };
 
