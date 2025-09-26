@@ -40,11 +40,16 @@ const workingProcessSteps = [
     bgColor: "#B9FF66",
   },
 ];
+import Navbar from "@/components/Navbar";
+import ContactUs from "@/components/ContactUs";
+import Footer from "@/components/Footer";
+import ServicesSection from "@/sections/ServicesSection";
 
 export default function Home() {
   return (
     <div>
       <Hero/>
+        <ServicesSection/>
       <div className="bg-gray-50 py-16">
         <div className="font-sans max-w-7xl mx-auto px-8 mb-12">
           <div className="flex flex-col lg:flex-row lg:items-baseline mb-12">
@@ -58,4 +63,14 @@ export default function Home() {
       </div>
     </div>
   );
+    return (
+        <main>
+            {/*<Navbar />*/}
+            <Hero />
+            <ServicesSection/>
+            {/* Add your other sections here */}
+            {/* <ContactUs /> */}
+            {/*<Footer />*/}
+        </main>
+    );
 }
