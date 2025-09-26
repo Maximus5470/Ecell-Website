@@ -45,13 +45,26 @@ const servicesData: ServiceData[] = [
 export default function ServicesSection(): React.JSX.Element {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+  const [isAnimating, setIsAnimating] = useState<boolean>(false);
 
   const handleToggleExpand = (index: number) => {
-    setExpandedIndex(expandedIndex === index ? null : index);
+    if (isAnimating) return;
+    
+    setIsAnimating(true);
+    
+    if (expandedIndex === index) {
+      // Collapsing
+      setExpandedIndex(null);
+      setTimeout(() => setIsAnimating(false), 800);
+    } else {
+      // Expanding
+      setExpandedIndex(index);
+      setTimeout(() => setIsAnimating(false), 1000);
+    }
   };
 
   return (
-    <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+    <section className={`py-16 px-4 sm:px-6 lg:px-8 bg-white ${expandedIndex !== null ? 'pb-32' : ''}`}>
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-16">
@@ -66,23 +79,37 @@ export default function ServicesSection(): React.JSX.Element {
         </div>
 
         {/* Services Grid */}
-        <div className={`transition-all duration-700 ease-in-out ${
-          expandedIndex !== null ? 'grid grid-cols-1 gap-6' : 'grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8'
-        }`}>
+        <div className={`grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 ${expandedIndex !== null ? 'mb-96' : ''}`}>
           {servicesData.map((service, index) => (
             <div
               key={index}
-              className={`transition-all duration-500 ease-out transform-gpu ${
+              className={`transition-all transform-gpu ${
                 expandedIndex !== null
                   ? expandedIndex === index
-                    ? 'scale-100 translate-y-0 z-10 relative'
-                    : 'scale-95 translate-y-4 opacity-60 pointer-events-none'
+                    ? 'duration-800 ease-out z-30 relative mb-12'
+                    : // Adjacent card (same row, different column) moves below expanded card
+                      (expandedIndex % 2 !== index % 2 && Math.floor(expandedIndex / 2) === Math.floor(index / 2))
+                      ? 'duration-800 ease-out translate-y-200 mb-12 z-40'
+                      : // Cards in rows below the expanded card move down more
+                        Math.floor(index / 2) > Math.floor(expandedIndex / 2)
+                      ? `duration-800 ease-out translate-y-100 mb-12 ${
+                          // Right column cards get higher z-index when left column cards are expanded
+                          expandedIndex % 2 === 0 && index % 2 === 1 ? 'z-40' : 'z-20'
+                        }`
+                      : // Cards in rows above stay in place or move slightly
+                        `duration-800 ease-out translate-y-0 mb-12 ${
+                          // Right column cards get higher z-index when left column cards are expanded
+                          expandedIndex % 2 === 0 && index % 2 === 1 ? 'z-40' : 'z-20'
+                        }`
                   : hoveredIndex === null
-                  ? 'scale-100 translate-y-0'
+                  ? 'duration-600 ease-out translate-y-0'
                   : hoveredIndex === index
-                  ? 'scale-105 -translate-y-2 z-10 relative shadow-lg'
-                  : 'scale-98 translate-y-2 opacity-90'
-              }`}
+                  ? 'duration-300 ease-out scale-105 -translate-y-2 z-10 relative'
+                  : 'duration-300 ease-out scale-98 translate-y-2 opacity-90'
+              } ${expandedIndex !== null ? 'pb-6' : ''}`}
+              style={{
+                transformOrigin: 'center center'
+              }}
               onMouseEnter={() => expandedIndex === null && setHoveredIndex(index)}
               onMouseLeave={() => expandedIndex === null && setHoveredIndex(null)}
             >
@@ -92,6 +119,7 @@ export default function ServicesSection(): React.JSX.Element {
                 icon={service.icon}
                 isExpanded={expandedIndex === index}
                 onToggleExpand={() => handleToggleExpand(index)}
+                cardPosition={index % 2 === 0 ? 'left' : 'right'}
               />
             </div>
           ))}

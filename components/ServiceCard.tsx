@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 
 interface ServiceCardProps {
@@ -7,6 +7,7 @@ interface ServiceCardProps {
   icon: string;
   isExpanded?: boolean;
   onToggleExpand?: () => void;
+  cardPosition?: 'left' | 'right';
 }
 
 // Service styling configuration
@@ -68,9 +69,27 @@ const ArrowIcon = ({ isDarkTheme }: { isDarkTheme: boolean }) => (
   </svg>
 );
 
-export default function ServiceCard({ title, description, icon, isExpanded = false, onToggleExpand }: ServiceCardProps): React.JSX.Element {
+export default function ServiceCard({ title, description, icon, isExpanded = false, onToggleExpand, cardPosition = 'left' }: ServiceCardProps): React.JSX.Element {
   const styles = serviceStyles[title] || defaultStyle;
   const isDarkTheme = title === 'Social Media Marketing' || title === 'Analytics and Tracking';
+  const [isCollapsing, setIsCollapsing] = useState(false);
+  const [showContent, setShowContent] = useState(isExpanded);
+
+  React.useEffect(() => {
+    if (isExpanded) {
+      // When expanding, show content after card grows
+      setTimeout(() => setShowContent(true), 500);
+    } else {
+      // When collapsing, hide content first
+      setShowContent(false);
+      setIsCollapsing(true);
+      setTimeout(() => setIsCollapsing(false), 600);
+    }
+  }, [isExpanded]);
+
+  const handleToggle = () => {
+    if (onToggleExpand) onToggleExpand();
+  };
 
   // Sample expanded content for each service
   const expandedContent = {
@@ -154,34 +173,40 @@ export default function ServiceCard({ title, description, icon, isExpanded = fal
 
   return (
     <div
-      className={`relative p-6 sm:p-8 rounded-[45px] flex flex-col justify-between transition-all duration-500 ${styles.cardBg} overflow-hidden ${
+      className={`relative rounded-[45px] flex flex-col justify-between ${styles.cardBg} transition-all ${
         isExpanded 
-          ? 'min-h-[600px] sm:min-h-[700px]' 
-          : 'min-h-[280px] sm:min-h-[320px] lg:min-h-[350px]'
+          ? 'duration-800 ease-out p-6 sm:p-8 min-h-[600px] sm:min-h-[700px] w-[210%] shadow-2xl border-2 overflow-visible'
+          : 'duration-600 ease-in p-6 sm:p-8 min-h-[280px] sm:min-h-[320px] lg:min-h-[350px] w-full shadow-md overflow-hidden'
       }`}
       style={{
         border: '1px solid #191A23',
         borderBottomWidth: '8px',
-        borderBottomColor: '#191A23'
+        borderBottomColor: '#191A23',
+        transformOrigin: cardPosition === 'left' ? 'top left' : 'top right',
+        ...(isExpanded && cardPosition === 'right' && {
+          marginLeft: '-110%'
+        })
       }}
     >
       {/* Illustration */}
-      <div className={`absolute right-4 w-44 h-44 sm:w-52 sm:h-52 lg:w-60 lg:h-60 opacity-70 transition-all duration-500 ${
+      <div className={`absolute right-2 transition-all ${
         isExpanded 
-          ? 'top-8 transform-none' 
-          : 'top-1/2 transform -translate-y-1/2'
+          ? 'duration-1000 ease-out top-6 w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80 opacity-50' 
+          : 'duration-800 ease-in top-1/2 transform -translate-y-1/2 w-52 h-52 sm:w-60 sm:h-60 lg:w-72 lg:h-72 opacity-80'
       }`}>
         <Image 
           src={icon} 
           alt={`${title} illustration`}
           fill
           className="object-contain"
-          sizes="(max-width: 640px) 176px, (max-width: 1024px) 208px, 240px"
+          sizes="(max-width: 640px) 208px, (max-width: 1024px) 240px, 320px"
         />
       </div>
 
       {/* Content */}
-      <div className="relative z-10 flex flex-col justify-between h-full pr-48 sm:pr-56 lg:pr-64">
+      <div className={`relative z-10 flex flex-col justify-between h-full ${
+        isExpanded ? 'pr-72 sm:pr-80 lg:pr-88' : 'pr-56 sm:pr-64 lg:pr-76'
+      } transition-all duration-800`}>
         <div>
           {renderTitle()}
           
@@ -191,18 +216,36 @@ export default function ServiceCard({ title, description, icon, isExpanded = fal
           </p>
           
           {/* Expanded Content */}
-          {isExpanded && (
-            <div className={`mt-6 space-y-6 ${styles.textColor}`}>
-              <div>
+          {showContent && (
+            <div className={`mt-6 space-y-6 ${styles.textColor} transition-all duration-500 ${
+              isCollapsing 
+                ? 'opacity-0 translate-y-4 pointer-events-none' 
+                : 'opacity-100 translate-y-0'
+            }`}>
+              <div className={`transform transition-all duration-400 ${
+                showContent && !isCollapsing 
+                  ? 'delay-100 translate-y-0 opacity-100' 
+                  : 'translate-y-4 opacity-0'
+              }`}>
                 <h4 className="text-lg font-semibold mb-3">Overview</h4>
                 <p className="leading-relaxed pr-4">{currentContent.details}</p>
               </div>
               
-              <div>
+              <div className={`transform transition-all duration-400 ${
+                showContent && !isCollapsing 
+                  ? 'delay-200 translate-y-0 opacity-100' 
+                  : 'translate-y-4 opacity-0'
+              }`}>
                 <h4 className="text-lg font-semibold mb-3">What We Include</h4>
                 <ul className="grid grid-cols-1 gap-2 pr-4">
                   {currentContent.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-center">
+                    <li key={idx} className={`flex items-center transform transition-all duration-300 ${
+                      showContent && !isCollapsing 
+                        ? 'translate-y-0 opacity-100' 
+                        : 'translate-y-2 opacity-0'
+                    }`} style={{
+                      transitionDelay: showContent && !isCollapsing ? `${300 + idx * 50}ms` : '0ms'
+                    }}>
                       <span className="mr-2 text-[#B9FF66] flex-shrink-0">✓</span>
                       <span className="text-sm">{feature}</span>
                     </li>
@@ -210,7 +253,11 @@ export default function ServiceCard({ title, description, icon, isExpanded = fal
                 </ul>
               </div>
               
-              <div className={`p-4 rounded-lg mr-4 ${isDarkTheme ? 'bg-white/10' : 'bg-black/5'}`}>
+              <div className={`p-4 rounded-lg mr-4 transform transition-all duration-400 ${
+                showContent && !isCollapsing 
+                  ? 'delay-500 translate-y-0 opacity-100' 
+                  : 'translate-y-4 opacity-0'
+              } ${isDarkTheme ? 'bg-white/10' : 'bg-black/5'}`}>
                 <h4 className="text-lg font-semibold mb-2">Expected Results</h4>
                 <p className="leading-relaxed text-sm">{currentContent.benefits}</p>
               </div>
@@ -218,15 +265,19 @@ export default function ServiceCard({ title, description, icon, isExpanded = fal
           )}
         </div>
         
-        <div className="mt-auto">
+        <div className="mt-auto pt-6">
           <button
-            onClick={onToggleExpand}
-            className={`inline-flex items-center text-base sm:text-lg font-medium ${styles.textColor} group transition-transform duration-200 hover:translate-x-1 cursor-pointer`}
+            onClick={handleToggle}
+            className={`inline-flex items-center text-base sm:text-lg font-medium ${styles.textColor} group transition-all duration-300 hover:translate-x-1 cursor-pointer`}
           >
-            <span className="mr-3 flex items-center justify-center group-hover:scale-105 transition-transform duration-200">
+            <span className={`mr-3 flex items-center justify-center transition-all duration-300 ${
+              isExpanded ? 'rotate-180 scale-105' : 'rotate-0 scale-100 group-hover:scale-105'
+            }`}>
               <ArrowIcon isDarkTheme={isDarkTheme} />
             </span>
-            {isExpanded ? 'Show less' : 'Learn more'}
+            <span className="transition-all duration-300">
+              {isExpanded ? 'Show less' : 'Learn more'}
+            </span>
           </button>
         </div>
       </div>
