@@ -5,6 +5,7 @@ import Image from 'next/image';
 const Navbar = () => {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const controlNavbar = () => {
@@ -30,24 +31,57 @@ const Navbar = () => {
   }, [lastScrollY]);
 
   return (
-    <nav className={`flex items-center justify-between bg-gray-50 py-4 px-8 fixed top-0 left-0 right-0 z-50 shadow-sm transition-transform duration-300 ease-in-out ${
+    <nav className={`flex items-center justify-between bg-gray-50 py-4 px-4 sm:px-8 fixed top-0 left-0 right-0 z-50 shadow-sm transition-transform duration-300 ease-in-out ${
       isVisible ? 'translate-y-0' : '-translate-y-full'
     }`}>
       <div className="flex items-center">
-        <Image src="/ecelllogo.png" alt="E-Cell IARE Logo" width={150} height={10} priority />
+        <Image src="/ecelllogo.png" alt="E-Cell IARE Logo" width={120} height={8} priority className="sm:w-[150px]" />
       </div>
-      <ul className="flex flex-1 justify-center items-center list-none gap-9 m-0 p-0">
-        <li className="font-inter text-[16px] font-normal text-gray-800 cursor-pointer transition-colors hover:text-teal-600">Home</li>
-        <li className="font-inter text-[16px] font-normal text-gray-800 cursor-pointer transition-colors hover:text-teal-600">About us</li>
-        <li className="font-inter text-[16px] font-normal text-gray-800 cursor-pointer transition-colors hover:text-teal-600">Teams</li>
-        <li className="font-inter text-[16px] font-normal text-gray-800 cursor-pointer transition-colors hover:text-teal-600">Startups</li>
-        <li className="font-inter text-[16px] font-normal text-gray-800 cursor-pointer transition-colors hover:text-teal-600">Collaborators</li>
-        <li className="font-inter text-[1px] font-normal text-gray-800 cursor-pointer transition-colors hover:text-teal-600">Contact us</li>
+      
+      {/* Desktop Menu */}
+      <ul className="hidden lg:flex flex-1 justify-center items-center list-none gap-6 xl:gap-9 m-0 p-0">
+        <li className="font-inter text-[14px] xl:text-[16px] font-normal text-gray-800 cursor-pointer transition-colors hover:text-teal-600">Home</li>
+        <li className="font-inter text-[14px] xl:text-[16px] font-normal text-gray-800 cursor-pointer transition-colors hover:text-teal-600">About us</li>
+        <li className="font-inter text-[14px] xl:text-[16px] font-normal text-gray-800 cursor-pointer transition-colors hover:text-teal-600">Teams</li>
+        <li className="font-inter text-[14px] xl:text-[16px] font-normal text-gray-800 cursor-pointer transition-colors hover:text-teal-600">Startups</li>
+        <li className="font-inter text-[14px] xl:text-[16px] font-normal text-gray-800 cursor-pointer transition-colors hover:text-teal-600">Collaborators</li>
+        <li className="font-inter text-[14px] xl:text-[16px] font-normal text-gray-800 cursor-pointer transition-colors hover:text-teal-600">Contact us</li>
       </ul>
-      <div className="flex items-center">
-        <button className="px-6 py-2 border border-gray-800 rounded-lg bg-white text-gray-800 text-[16px] font-inter cursor-pointer transition-all hover:bg-teal-600 hover:text-white hover:border-teal-600">
+      
+      {/* Desktop Login Button */}
+      <div className="hidden sm:flex items-center">
+        <button className="px-4 sm:px-6 py-2 border border-gray-800 rounded-lg bg-white text-gray-800 text-[14px] sm:text-[16px] font-inter cursor-pointer transition-all hover:bg-teal-600 hover:text-white hover:border-teal-600">
           Login
         </button>
+      </div>
+
+      {/* Mobile Menu Button */}
+      <button 
+        className="lg:hidden flex flex-col justify-center items-center w-8 h-8 space-y-1"
+        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+      >
+        <span className={`block h-0.5 w-6 bg-gray-800 transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-1.5' : ''}`}></span>
+        <span className={`block h-0.5 w-6 bg-gray-800 transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0' : ''}`}></span>
+        <span className={`block h-0.5 w-6 bg-gray-800 transition-all duration-300 ${isMobileMenuOpen ? '-rotate-45 -translate-y-1.5' : ''}`}></span>
+      </button>
+
+      {/* Mobile Menu */}
+      <div className={`lg:hidden absolute top-full left-0 right-0 bg-gray-50 shadow-lg transition-all duration-300 ease-in-out ${
+        isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
+      }`}>
+        <ul className="flex flex-col items-center py-4 space-y-4">
+          <li className="font-inter text-[16px] font-normal text-gray-800 cursor-pointer transition-colors hover:text-teal-600">Home</li>
+          <li className="font-inter text-[16px] font-normal text-gray-800 cursor-pointer transition-colors hover:text-teal-600">About us</li>
+          <li className="font-inter text-[16px] font-normal text-gray-800 cursor-pointer transition-colors hover:text-teal-600">Teams</li>
+          <li className="font-inter text-[16px] font-normal text-gray-800 cursor-pointer transition-colors hover:text-teal-600">Startups</li>
+          <li className="font-inter text-[16px] font-normal text-gray-800 cursor-pointer transition-colors hover:text-teal-600">Collaborators</li>
+          <li className="font-inter text-[16px] font-normal text-gray-800 cursor-pointer transition-colors hover:text-teal-600">Contact us</li>
+          <li className="sm:hidden">
+            <button className="px-6 py-2 border border-gray-800 rounded-lg bg-white text-gray-800 text-[16px] font-inter cursor-pointer transition-all hover:bg-teal-600 hover:text-white hover:border-teal-600">
+              Login
+            </button>
+          </li>
+        </ul>
       </div>
     </nav>
   );

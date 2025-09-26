@@ -1,5 +1,6 @@
 import Hero from "@/components/Hero";
 import WorkingProcess from "@/components/WorkingProcessComponent";
+import ServicesSection from "@/sections/ServicesSection";
 
 const workingProcessSteps = [
   {
@@ -40,37 +41,23 @@ const workingProcessSteps = [
     bgColor: "#B9FF66",
   },
 ];
-import Navbar from "@/components/Navbar";
-import ContactUs from "@/components/ContactUs";
-import Footer from "@/components/Footer";
-import ServicesSection from "@/sections/ServicesSection";
 
 export default function Home() {
   return (
     <div>
-      <Hero/>
-        <ServicesSection/>
-      <div className="bg-gray-50 py-16">
-        <div className="font-sans max-w-7xl mx-auto px-8 mb-12">
-          <div className="flex flex-col lg:flex-row lg:items-baseline mb-12">
-            <span className="bg-[#B9FF66] text-black font-bold text-3xl px-8 py-4 rounded-lg mb-4 lg:mb-0 lg:mr-8">Our Working Process</span>
-            <span className="text-gray-600 text-lg lg:text-xl">Step-by-Step Guide to Achieving Your Business Goals</span>
+      <Hero />
+      <ServicesSection />
+      <div className="bg-gray-50 py-8 sm:py-12 lg:py-16">
+        <div className="font-sans max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8 sm:mb-12">
+          <div className="flex flex-col lg:flex-row lg:items-baseline mb-8 sm:mb-12 text-center lg:text-left">
+            <span className="bg-[#B9FF66] text-black font-bold text-xl sm:text-2xl lg:text-3xl px-6 sm:px-8 py-3 sm:py-4 rounded-lg mb-4 lg:mb-0 lg:mr-8 inline-block">Our Working Process</span>
+            <span className="text-gray-600 text-base sm:text-lg lg:text-xl leading-relaxed">Step-by-Step Guide to Achieving Your Business Goals</span>
           </div>
         </div>
-        <WorkingProcess 
+        <WorkingProcess
           steps={workingProcessSteps}
         />
       </div>
     </div>
   );
-    return (
-        <main>
-            {/*<Navbar />*/}
-            <Hero />
-            <ServicesSection/>
-            {/* Add your other sections here */}
-            {/* <ContactUs /> */}
-            {/*<Footer />*/}
-        </main>
-    );
 }

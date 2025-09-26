@@ -1,6 +1,6 @@
 'use client'
 // components/ServicesSection.tsx
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import ServiceCard from '../components/ServiceCard';
 
 interface ServiceData {
@@ -46,6 +46,35 @@ export default function ServicesSection(): React.JSX.Element {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
   const [isAnimating, setIsAnimating] = useState<boolean>(false);
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  // Custom smooth scroll function for better control
+  const smoothScrollToElement = (element: HTMLElement) => {
+    const targetPosition = element.offsetTop - 80; // 80px offset from top for better visibility
+    const startPosition = window.pageYOffset;
+    const distance = targetPosition - startPosition;
+    const duration = 1200; // Slower duration (1.2 seconds)
+    let start: number | null = null;
+
+    // Ease-in-out cubic function for smoother animation
+    const easeInOutCubic = (t: number): number => {
+      return t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
+    };
+
+    const animateScroll = (timestamp: number) => {
+      if (!start) start = timestamp;
+      const progress = Math.min((timestamp - start) / duration, 1);
+      const easeProgress = easeInOutCubic(progress);
+      
+      window.scrollTo(0, startPosition + distance * easeProgress);
+      
+      if (progress < 1) {
+        requestAnimationFrame(animateScroll);
+      }
+    };
+
+    requestAnimationFrame(animateScroll);
+  };
 
   const handleToggleExpand = (index: number) => {
     if (isAnimating) return;
@@ -59,12 +88,21 @@ export default function ServicesSection(): React.JSX.Element {
     } else {
       // Expanding
       setExpandedIndex(index);
+      
+      // Scroll to the card with a delay to allow expansion animation to start
+      setTimeout(() => {
+        const cardElement = cardRefs.current[index];
+        if (cardElement) {
+          smoothScrollToElement(cardElement);
+        }
+      }, 400);
+      
       setTimeout(() => setIsAnimating(false), 1000);
     }
   };
 
   return (
-    <section className={`py-16 px-4 sm:px-6 lg:px-8 bg-white ${expandedIndex !== null ? 'pb-32' : ''}`}>
+    <section className={`py-16 px-4 sm:px-6 lg:px-8 bg-gray-50 ${expandedIndex !== null ? 'pb-32' : ''}`}>
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-16">
@@ -83,6 +121,9 @@ export default function ServicesSection(): React.JSX.Element {
           {servicesData.map((service, index) => (
             <div
               key={index}
+              ref={(el) => {
+                cardRefs.current[index] = el;
+              }}
               className={`transition-all transform-gpu ${
                 expandedIndex !== null
                   ? expandedIndex === index

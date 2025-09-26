@@ -47,7 +47,7 @@ const ContactUs = () => {
             Contact Us
           </h2>
           <p className="text-gray-700 text-base md:text-lg">
-            Connect with Us: Let's Discuss Your Digital Marketing Needs
+            Connect with Us: Let&apos;s Discuss Your Digital Marketing Needs
           </p>
         </div>
 
