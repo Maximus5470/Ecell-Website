@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import Image from 'next/image';
 
 interface ServiceCardProps {
@@ -71,6 +71,34 @@ const ArrowIcon = ({ isDarkTheme }: { isDarkTheme: boolean }) => (
 export default function ServiceCard({ title, description, icon, isExpanded = false, onToggleExpand }: ServiceCardProps): React.JSX.Element {
   const styles = serviceStyles[title] || defaultStyle;
   const isDarkTheme = title === 'Social Media Marketing' || title === 'Analytics and Tracking';
+  const cardRef = useRef<HTMLDivElement>(null);
+  const previousScrollPosition = useRef<number>(0);
+
+  useEffect(() => {
+    if (isExpanded && cardRef.current) {
+      // Store the current scroll position before expanding
+      previousScrollPosition.current = window.scrollY;
+      
+      // Use a small delay to ensure the card has expanded before calculating position
+      setTimeout(() => {
+        if (cardRef.current) {
+          const rect = cardRef.current.getBoundingClientRect();
+          const cardTop = rect.top + window.scrollY;
+          window.scrollTo({
+            top: cardTop ,
+            behavior: 'smooth'
+          });
+        }
+      }, 100); // Small delay to allow for expansion animation
+    } else if (!isExpanded && previousScrollPosition.current !== 0) {
+      // Return to the previous scroll position when collapsed
+      window.scrollTo({
+        top: previousScrollPosition.current,
+        behavior: 'smooth'
+      });
+      previousScrollPosition.current = 0;
+    }
+  }, [isExpanded]);
 
   // Sample expanded content for each service
   const expandedContent = {
@@ -154,6 +182,7 @@ export default function ServiceCard({ title, description, icon, isExpanded = fal
 
   return (
     <div
+      ref={cardRef}
       className={`relative p-6 sm:p-8 rounded-[45px] flex flex-col justify-between transition-all duration-500 ${styles.cardBg} overflow-hidden ${
         isExpanded 
           ? 'min-h-[600px] sm:min-h-[700px]' 
@@ -165,8 +194,8 @@ export default function ServiceCard({ title, description, icon, isExpanded = fal
         borderBottomColor: '#191A23'
       }}
     >
-      {/* Illustration */}
-      <div className={`absolute right-4 w-44 h-44 sm:w-52 sm:h-52 lg:w-60 lg:h-60 opacity-70 transition-all duration-500 ${
+      {/* Illustration - Desktop */}
+      <div className={`hidden sm:block absolute right-4 w-52 h-52 lg:w-60 lg:h-60 opacity-70 transition-all duration-500 ${
         isExpanded 
           ? 'top-8 transform-none' 
           : 'top-1/2 transform -translate-y-1/2'
@@ -176,14 +205,27 @@ export default function ServiceCard({ title, description, icon, isExpanded = fal
           alt={`${title} illustration`}
           fill
           className="object-contain"
-          sizes="(max-width: 640px) 176px, (max-width: 1024px) 208px, 240px"
+          sizes="(max-width: 1024px) 208px, 240px"
         />
       </div>
 
       {/* Content */}
-      <div className="relative z-10 flex flex-col justify-between h-full pr-48 sm:pr-56 lg:pr-64">
+      <div className="relative z-10 flex flex-col justify-between h-full sm:pr-56 lg:pr-64">
         <div>
           {renderTitle()}
+          
+          {/* Mobile Illustration */}
+          <div className="sm:hidden flex justify-center mb-6">
+            <div className="relative w-32 h-32 opacity-70">
+              <Image 
+                src={icon} 
+                alt={`${title} illustration`}
+                fill
+                className="object-contain"
+                sizes="128px"
+              />
+            </div>
+          </div>
           
           {/* Basic Description */}
           <p className={`text-base ${styles.textColor} mb-6 leading-relaxed`}>
