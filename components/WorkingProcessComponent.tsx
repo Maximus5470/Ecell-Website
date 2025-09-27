@@ -66,4 +66,3 @@ const WorkingProcess: React.FC<WorkingProcessProps> = ({
 
 export default WorkingProcess;
 
-
