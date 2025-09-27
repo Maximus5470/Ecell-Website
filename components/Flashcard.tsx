@@ -1,6 +1,7 @@
 // components/Flashcard.tsx
 import React from "react";
 
+
 const cards = [
   {
     title: "Best Startup Award",
