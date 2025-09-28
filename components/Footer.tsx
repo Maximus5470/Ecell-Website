@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import React, { useState } from "react";
 
 const Footer = () => {
@@ -30,21 +31,24 @@ const Footer = () => {
 
           {/* Navigation */}
           <nav className="hidden md:flex gap-4 lg:gap-8 text-sm lg:text-lg justify-center lg:justify-start flex-wrap">
-            <a href="#" className="text-white underline hover:text-gray-300">
+            <Link href="/" className="text-white hover:text-gray-300">
               Home
-            </a>
-            <a href="#" className="text-white underline hover:text-gray-300">
+            </Link>
+            <Link href="/about" className="text-white hover:text-gray-300">
               About us
-            </a>
-            <a href="#" className="text-white underline hover:text-gray-300">
+            </Link>
+            <Link href="/teams" className="text-white hover:text-gray-300">
               Teams
-            </a>
-            <a href="#" className="text-white underline hover:text-gray-300">
+            </Link>
+            <Link href="/startups" className="text-white hover:text-gray-300">
               Startups
-            </a>
-            <a href="#" className="text-white underline hover:text-gray-300">
+            </Link>
+            <Link href="/collaborators" className="text-white hover:text-gray-300">
               Collaborators
-            </a>
+            </Link>
+            <Link href="/contact" className="text-white hover:text-gray-300">
+              Contact us
+            </Link>
           </nav>
 
           {/* Social Icons */}
