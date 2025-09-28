@@ -41,7 +41,7 @@ export const Hero_Aboutus: React.FC = () => {
 
   return (
     // Outer div for page background
-    <div className={`w-full min-h-screen flex flex-col items-center justify-center font-sans p-4 sm:p-6`} style={{ backgroundColor: COLOR_PAGE_BG }}>
+    <div className={`w-full min-h-screen flex flex-col items-center justify-center font-sans pt-16 p-4 sm:pt-16 sm:p-16`} style={{ backgroundColor: COLOR_PAGE_BG }}>
 
         {/* Hero Box Container: THE GREY BOX - Now responsive in height and padding */}
         <motion.section 
