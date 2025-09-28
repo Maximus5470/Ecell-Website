@@ -65,11 +65,6 @@ const Navbar = () => {
           </Link>
         </li>
         <li>
-          <Link href="/services" className="font-inter text-[14px] xl:text-[16px] font-normal text-gray-800 cursor-pointer transition-colors hover:text-teal-600">
-            Services
-          </Link>
-        </li>
-        <li>
           <Link href="/teams" className="font-inter text-[14px] xl:text-[16px] font-normal text-gray-800 cursor-pointer transition-colors hover:text-teal-600">
             Teams
           </Link>
@@ -119,11 +114,6 @@ const Navbar = () => {
           <li>
             <Link href="/about" onClick={() => setIsMobileMenuOpen(false)} className="font-inter text-[16px] font-normal text-gray-800 cursor-pointer transition-colors hover:text-teal-600">
               About us
-            </Link>
-          </li>
-          <li>
-            <Link href="/services" onClick={() => setIsMobileMenuOpen(false)} className="font-inter text-[16px] font-normal text-gray-800 cursor-pointer transition-colors hover:text-teal-600">
-              Services
             </Link>
           </li>
           <li>
