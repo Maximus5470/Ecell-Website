@@ -147,10 +147,17 @@ const Timeline = () => {
                     )}
                   </div>
 
-                  {/* Center timeline dot and year */}
+                  {/* Center timeline dot with year positioned on sides */}
                   <div className="w-32 flex flex-col items-center relative z-10 flex-shrink-0">
-                    <span className="bg-[#B9FF66] rounded-full h-8 w-8 flex items-center justify-center mb-3 border-4 border-white shadow-lg"></span>
-                    <span className="text-3xl font-bold text-gray-800">{item.year}</span>
+                    <div className="relative mb-3">
+                      <span className="bg-[#B9FF66] rounded-full h-8 w-8 flex items-center justify-center border-4 border-white shadow-lg"></span>
+                      {/* Year positioned absolutely relative to the circle - alternating sides */}
+                      <span className={`text-5xl font-bold text-gray-800 absolute top-1/2 transform -translate-y-1/2 ${
+                        isLeft ? 'left-12' : 'right-12'
+                      }`}>
+                        {item.year}
+                      </span>
+                    </div>
                   </div>
 
                   {/* Right side content */}
