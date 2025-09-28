@@ -91,12 +91,11 @@ const Navbar = () => {
         </li>
       </ul>
 
-      {/* Desktop Login Button */}
-      <div className="hidden sm:flex items-center">
+      {/* <div className="hidden sm:flex items-center">
         <button className="px-4 sm:px-6 py-2 border border-gray-800 rounded-lg bg-white text-gray-800 text-[14px] sm:text-[16px] font-inter cursor-pointer transition-all hover:bg-teal-600 hover:text-white hover:border-teal-600">
           Login
         </button>
-      </div>
+      </div> */}
 
       {/* Mobile Menu Button */}
       <button
@@ -111,7 +110,7 @@ const Navbar = () => {
       {/* Mobile Menu */}
       <div className={`lg:hidden absolute top-full left-0 right-0 bg-gray-50 shadow-lg transition-all duration-300 ease-in-out ${isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
         }`}>
-        <ul className="flex flex-col items-center py-4 space-y-4">
+        <ul className="flex flex-col items-center py-6 space-y-6">
           <li>
             <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="font-inter text-[16px] font-normal text-gray-800 cursor-pointer transition-colors hover:text-teal-600">
               Home
@@ -123,9 +122,9 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <button onClick={() => scrollToSection('services')} className="font-inter text-[16px] font-normal text-gray-800 cursor-pointer transition-colors hover:text-teal-600">
+            <Link href="/services" onClick={() => setIsMobileMenuOpen(false)} className="font-inter text-[16px] font-normal text-gray-800 cursor-pointer transition-colors hover:text-teal-600">
               Services
-            </button>
+            </Link>
           </li>
           <li>
             <Link href="/teams" onClick={() => setIsMobileMenuOpen(false)} className="font-inter text-[16px] font-normal text-gray-800 cursor-pointer transition-colors hover:text-teal-600">
@@ -143,15 +142,15 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <button onClick={() => scrollToSection('contact')} className="font-inter text-[16px] font-normal text-gray-800 cursor-pointer transition-colors hover:text-teal-600">
+            <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)} className="font-inter text-[16px] font-normal text-gray-800 cursor-pointer transition-colors hover:text-teal-600">
               Contact us
-            </button>
+            </Link>
           </li>
-          <li className="sm:hidden">
+          {/* <li className="sm:hidden">
             <button className="px-6 py-2 border border-gray-800 rounded-lg bg-white text-gray-800 text-[16px] font-inter cursor-pointer transition-all hover:bg-teal-600 hover:text-white hover:border-teal-600">
               Login
             </button>
-          </li>
+          </li> */}
         </ul>
       </div>
     </nav>
