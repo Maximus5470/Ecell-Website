@@ -89,12 +89,12 @@ const Timeline = () => {
         
         <div className="max-w-7xl mx-auto">
         <div className="relative" ref={timelineRef}>
-          {/* Central timeline line - gray background */}
-          <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gray-200"></div>
+          {/* Central timeline line - gray background - visible on all screens */}
+          <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gray-200"></div>
           
-          {/* Central timeline line - green progress overlay */}
+          {/* Central timeline line - green progress overlay - visible on all screens */}
           <div 
-            className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-1 bg-[#B9FF66] transition-all duration-200 ease-out top-0"
+            className="absolute left-1/2 transform -translate-x-1/2 w-1 bg-[#B9FF66] transition-all duration-200 ease-out top-0"
             style={{ 
               height: `${scrollProgress}px`,
               transformOrigin: 'top'
