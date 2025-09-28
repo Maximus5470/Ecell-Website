@@ -59,7 +59,6 @@ export default function Home() {
           steps={workingProcessSteps}
         />
       </div>
-      <ContactUs />
     </div>
   );
 }
