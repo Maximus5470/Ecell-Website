@@ -5,7 +5,7 @@ import Hero_Aboutus from "@/components/Hero_Aboutus";
 
 export default function AboutPage() {
   return (
-    <div className="pt-8">
+    <div className="pt-20 md:pt-8 lg:pt-12">
       <Hero_Aboutus />
       <Timeline />
       <Flashcard />
