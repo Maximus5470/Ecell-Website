@@ -69,7 +69,7 @@ const ArrowIcon = ({ isDarkTheme }: { isDarkTheme: boolean }) => (
   </svg>
 );
 
-export default function ServiceCard({ title, description, icon, isExpanded = false, onToggleExpand, cardPosition = 'left' }: ServiceCardProps): React.JSX.Element {
+export default function ServiceCard({ title, description, icon, isExpanded = false, onToggleExpand, cardPosition: _cardPosition = 'left' }: ServiceCardProps): React.JSX.Element {
   const styles = serviceStyles[title] || defaultStyle;
   const isDarkTheme = title === 'Social Media Marketing' || title === 'Analytics and Tracking';
   const [isCollapsing, setIsCollapsing] = useState(false);

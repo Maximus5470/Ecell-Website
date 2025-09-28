@@ -68,7 +68,7 @@ function Badge4() {
 
 export default function Flashcard() {
   return (
-    <section className="max-w-7xl mx-auto px-6 py-20">
+    <section className="max-w-7xl mx-auto bg-gray-50 px-6 py-20">
       {/* Header */}
       <div className="mb-12 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
         <div className="flex items-center gap-3">

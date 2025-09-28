@@ -1,7 +1,7 @@
 'use client'
 import React, { useState } from 'react'
 
-const page = () => {
+const ContactUs = () => {
   const [selectedOption, setSelectedOption] = useState('sayHi');
   const [formData, setFormData] = useState({
     name: '',
@@ -170,4 +170,4 @@ const page = () => {
   )
 }
 
-export default page
+export default ContactUs;
