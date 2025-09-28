@@ -108,14 +108,16 @@ const Timeline = () => {
               <div key={i} className="relative flex items-center mb-20 last:mb-0 timeline-item">
                 {/* Mobile layout - always show card below year */}
                 <div className="md:hidden w-full">
-                  <div className="flex flex-col items-center mb-6 relative">
-                    <span className="bg-[#B9FF66] rounded-full h-8 w-8 flex items-center justify-center mb-3 border-4 border-white relative z-10 shadow-lg"></span>
-                    {/* Year positioned alternately left/right */}
-                    <span className={`text-3xl font-bold text-gray-800 absolute top-0 ${
-                      isLeft ? 'right-15' : 'left-15'
-                    }`} style={{ top: '0px' }}>
-                      {item.year}
-                    </span>
+                  <div className="flex flex-col items-center mb-6">
+                    <div className="relative mb-3">
+                      <span className="bg-[#B9FF66] rounded-full h-8 w-8 flex items-center justify-center border-4 border-white relative z-10 shadow-lg"></span>
+                      {/* Year positioned absolutely relative to the circle */}
+                      <span className={`text-3xl font-bold text-gray-800 absolute top-1/2 transform -translate-y-1/2 ${
+                        !isLeft ? 'right-12' : 'left-12'
+                      }`}>
+                        {item.year}
+                      </span>
+                    </div>
                   </div>
                   <div className="bg-gray-900 text-white rounded-2xl shadow-lg px-10 py-10 min-h-[200px] w-full">
                     <div className="flex items-center mb-5">
