@@ -222,18 +222,24 @@ export default function ServicesSection(): React.JSX.Element {
                     {rightCard && (
                       <div 
                         className={`transition-all duration-800 ease-out ${
-                          isRightExpanded ? 'w-full' : 'w-1/2'
-                        } ${isLeftExpanded ? 'hidden' : ''}`}
+                          isLeftExpanded ? 'hidden' : ''
+                        }`}
+                        style={{
+                          width: isRightExpanded ? '100%' : '50%',
+                          marginLeft: 'auto'
+                        }}
                         onMouseEnter={() => !hasExpansion && setHoveredIndex(rightIndex)}
                         onMouseLeave={() => !hasExpansion && setHoveredIndex(null)}
                       >
-                        <div className={`transition-all duration-300 ease-out ${
-                          !hasExpansion && hoveredIndex === rightIndex
-                            ? 'scale-105 -translate-y-2'
-                            : !hasExpansion && hoveredIndex !== null && hoveredIndex !== rightIndex
-                            ? 'scale-98 translate-y-2 opacity-90'
-                            : 'scale-100 translate-y-0'
-                        }`}>
+                        <div 
+                          className={`transition-all duration-300 ease-out ${
+                            !hasExpansion && hoveredIndex === rightIndex
+                              ? 'scale-105 -translate-y-2'
+                              : !hasExpansion && hoveredIndex !== null && hoveredIndex !== rightIndex
+                              ? 'scale-98 translate-y-2 opacity-90'
+                              : 'scale-100 translate-y-0'
+                          }`}
+                        >
                           <ServiceCard
                             title={rightCard.title}
                             description={rightCard.description}

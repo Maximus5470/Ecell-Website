@@ -1,7 +1,6 @@
 import Hero from "@/components/Hero";
 import WorkingProcess from "@/components/WorkingProcessComponent";
 import ServicesSection from "@/sections/ServicesSection";
-import ContactUs from "@/components/ContactUs";
 
 const workingProcessSteps = [
   {
