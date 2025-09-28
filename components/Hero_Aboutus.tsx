@@ -41,12 +41,12 @@ export const Hero_Aboutus: React.FC = () => {
 
   return (
     // Outer div for page background
-    <div className={`w-full min-h-screen flex flex-col items-center justify-center font-sans pt-16 p-4 sm:pt-16 sm:p-16`} style={{ backgroundColor: COLOR_PAGE_BG }}>
+    <div className={`w-full h-screen flex flex-col items-center justify-center font-sans p-4 sm:p-16`} style={{ backgroundColor: COLOR_PAGE_BG }}>
 
         {/* Hero Box Container: THE GREY BOX - Now responsive in height and padding */}
         <motion.section 
-            // HEIGHT CHANGE: h-auto min-h-[70vh] for small screens, fixed h-[85vh] for desktop
-            className={`w-[98%] md:w-[95%] lg:w-[90%] xl:w-[88%] h-auto min-h-[70vh] lg:h-[85vh] flex items-center justify-center p-6 md:p-12 rounded-2xl overflow-hidden relative`} 
+            // HEIGHT CHANGE: Full height minus padding to prevent scroll issues
+            className={`w-[98%] md:w-[95%] lg:w-[90%] xl:w-[88%] h-full flex items-center justify-center p-6 md:p-12 rounded-2xl overflow-hidden relative`} 
             style={{ backgroundColor: COLOR_HERO_BOX }} 
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
