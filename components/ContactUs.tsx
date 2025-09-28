@@ -39,7 +39,7 @@ const ContactUs = () => {
   };
 
   return (
-    <section className="bg-gray-50 py-16 flex justify-center">
+    <section id="contact" className="bg-gray-50 py-16 flex justify-center">
       <div className="bg-white max-w-3xl w-full rounded-3xl shadow-md p-10">
         {/* Header */}
         <div className="mb-8 flex flex-col md:flex-row md:justify-between items-start md:items-center gap-4">
