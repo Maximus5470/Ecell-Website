@@ -1,6 +1,5 @@
 'use client';
 import React, { useState } from 'react';
-import Footer from './Footer';
 
 // TypeScript Interfaces
 interface Founder {
@@ -359,7 +358,6 @@ const App: React.FC = () => {
         </section>
       </main>
       {selectedStartup && <StartupModal startup={selectedStartup} isOpen onClose={handleCloseModal} />}
-        <Footer />
     </div>
     
   );
