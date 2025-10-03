@@ -213,7 +213,6 @@ export default function ServicesSection(): React.JSX.Element {
                           icon={leftCard.icon}
                           isExpanded={isLeftExpanded}
                           onToggleExpand={() => handleToggleExpand(leftIndex)}
-                          cardPosition="left"
                         />
                       </div>
                     </div>
@@ -246,7 +245,6 @@ export default function ServicesSection(): React.JSX.Element {
                             icon={rightCard.icon}
                             isExpanded={isRightExpanded}
                             onToggleExpand={() => handleToggleExpand(rightIndex)}
-                            cardPosition="right"
                           />
                         </div>
                       </div>
@@ -269,7 +267,6 @@ export default function ServicesSection(): React.JSX.Element {
                                 icon={rightCard.icon}
                                 isExpanded={false}
                                 onToggleExpand={() => handleToggleExpand(rightIndex)}
-                                cardPosition="right"
                               />
                             </div>
                           )}
@@ -284,7 +281,6 @@ export default function ServicesSection(): React.JSX.Element {
                                 icon={leftCard.icon}
                                 isExpanded={false}
                                 onToggleExpand={() => handleToggleExpand(leftIndex)}
-                                cardPosition="left"
                               />
                             </div>
                           )}
@@ -303,7 +299,6 @@ export default function ServicesSection(): React.JSX.Element {
                       icon={leftCard.icon}
                       isExpanded={isLeftExpanded}
                       onToggleExpand={() => handleToggleExpand(leftIndex)}
-                      cardPosition="left"
                     />
                   </div>
                   {rightCard && (
@@ -314,7 +309,6 @@ export default function ServicesSection(): React.JSX.Element {
                         icon={rightCard.icon}
                         isExpanded={isRightExpanded}
                         onToggleExpand={() => handleToggleExpand(rightIndex)}
-                        cardPosition="right"
                       />
                     </div>
                   )}

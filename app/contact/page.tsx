@@ -1,5 +1,6 @@
 'use client'
 import React, { useState } from 'react'
+import Image from 'next/image'
 
 const ContactUs = () => {
   const [selectedOption, setSelectedOption] = useState('sayHi');
@@ -155,9 +156,11 @@ const ContactUs = () => {
               {/* Contact Illustration */}
               <div className="w-full md:w-1/2 flex justify-center md:justify-end items-center mt-6 md:mt-0">
                 <div className="relative w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg">
-                  <img
+                  <Image
                     src="/ContactUs-Picture.png"
                     alt="Contact Us Illustration"
+                    width={300}
+                    height={300}
                     className="hidden md:block lg:block w-[300] h-auto object-contain mx-auto md:ml-auto md:mr-0"
                   />
                 </div>
