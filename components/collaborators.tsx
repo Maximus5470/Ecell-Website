@@ -109,7 +109,7 @@ export default function Collaborators() {
   const partnerTypes = ["All", "Corporate", "Academic", "Startup", "Government", "NGO"];
 
   return (
-    <section className="relative min-h-screen py-20 px-4 sm:px-6 lg:px-8 bg-white overflow-hidden">
+    <section className="relative min-h-screen py-20 px-4 sm:px-6 lg:px-8  overflow-hidden">
       {/* Animated SVG Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
