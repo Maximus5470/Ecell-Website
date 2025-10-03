@@ -132,11 +132,8 @@ export default function Collaborators() {
             className="inline-block mb-6"
           >
             <div className="relative">
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black text-[#191A23] mb-4">
-                Trusted
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#B9FF66] to-[#8FD644]">
-                  Collaborators
-                </span>
+              <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
+                Our <span className="bg-[#B9FF66] px-2 py-1 rounded">Collaborators</span>
               </h1>
             </div>
           </motion.div>
@@ -365,17 +362,6 @@ export default function Collaborators() {
                                     group-hover:-translate-y-1 transition-transform" />
                                 </a>
                               )}
-                              <button
-                                onClick={(e) => {
-                                  e.stopPropagation();
-                                  setSelectedCollaborator(collaborator);
-                                }}
-                                className="inline-flex items-center gap-2 px-6 py-3 bg-white 
-                                  text-[#191A23] rounded-xl font-bold border-2 border-[#191A23] 
-                                  hover:bg-[#191A23] hover:text-white transition-all duration-300"
-                              >
-                                View Full Details
-                              </button>
                             </div>
                           </motion.div>
                         )}
