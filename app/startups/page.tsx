@@ -3,8 +3,6 @@ import React, { useState } from 'react';
 import StartupCard, { Startup } from '@/components/StartupCard';
 import StartupModal from '@/components/StartupModal';
 
-const GREEN_ACCENT = '#B9FF66';
-
 // Mock data for startups and incubation projects
 const MOCK_STARTUPS: Startup[] = [
   {

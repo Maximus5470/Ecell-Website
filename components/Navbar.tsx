@@ -8,18 +8,6 @@ const Navbar = () => {
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      const offsetTop = element.getBoundingClientRect().top + window.pageYOffset - 80; // Account for fixed navbar
-      window.scrollTo({
-        top: offsetTop,
-        behavior: 'smooth'
-      });
-    }
-    setIsMobileMenuOpen(false); // Close mobile menu after clicking
-  };
-
   useEffect(() => {
     const controlNavbar = () => {
       const currentScrollY = window.scrollY;
